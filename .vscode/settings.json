@@ -1,0 +1,4 @@
+{
+    "files.associations": {"*.scss": "scss"},
+    "scss.lint.unknownAtRules": "ignore"
+}

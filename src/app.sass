@@ -1,0 +1,86 @@
+@tailwind base
+@tailwind components
+@tailwind utilities
+
+@font-face
+    font-family: "lufga"
+    src: url("/lufga.otf")
+
+html, body, #app, main
+    @apply h-full w-full
+
+main
+    @apply flex flex-col justify-between p-6 font-['lufga']
+
+.TextSplitter 
+    @apply text-center
+
+    * > span
+        @apply relative animate-[wave_0.8s_ease-in-out_infinite_alternate]
+
+        @for $i from 1 through 100
+            &:nth-child(#{$i})
+                animation-delay: $i * -100ms
+
+@keyframes wave 
+    from
+        @apply bottom-[1vh]
+    
+    to
+        @apply bottom-[-1vh]
+    
+$colors: tomato, lightseagreen, orange, dodgerblue, blueviolet
+
+@for $i from 1 through length($colors)
+    span:nth-child(#{$i}n)
+        color: nth($colors, $i)
+
+h1, h2
+    @apply text-center leading-none
+
+h1
+    @apply lg:text-[14rem] md:text-[16rem] sm:text-[11rem] to:text-[6rem] ti:text-[5rem]
+
+#pablo 
+    @apply grid justify-center
+
+    img 
+        @apply h-[38vh]
+        grid-area: 1 / 1 / 2 / 2
+
+@mixin rotation($from, $to)
+    @keyframes rotation-#{$from}-#{$to}
+        from 
+            transform: rotate(#{$from})
+    
+        to 
+            transform: rotate(#{$to})
+
+#beak 
+    @include rotation(-5deg, 5deg)
+    @apply animate-[rotation--5deg-5deg_1s_ease-in-out_infinite_alternate]
+    animation-delay: -200ms
+
+#left_leg, #right_leg
+    @apply animate-[translate_1s_ease-in-out_infinite_alternate]
+
+#right_leg 
+    animation-delay: -1000ms
+
+@keyframes translate
+    from
+        transform: translateY(1vh)
+
+    to
+        transform: translateY(-3vh)
+
+#body 
+    @apply animate-[rotation--5deg-5deg_1s_ease-in-out_infinite_alternate]
+
+#eye
+    @include rotation(5deg, 16deg)
+    @apply animate-[rotation-5deg-16deg_1s_ease-in-out_infinite_alternate]
+    animation-delay: -400ms
+
+h2 
+    @apply lg:text-[6rem] md:text-[8rem] sm:text-[6rem] to:text-[3.5rem] ti:text-[2.5rem]
