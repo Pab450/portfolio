@@ -3,7 +3,7 @@
 
     $: {
         if (HTMLElement) {
-            let tagName = HTMLElement.firstChild.tagName;
+            const tagName = HTMLElement.firstChild.tagName;
 
             HTMLElement.innerHTML = `<${tagName}> ${HTMLElement.innerText.split('').map(letter => `<span>${letter}</span>`).join('')} </${tagName}>`;
         }
